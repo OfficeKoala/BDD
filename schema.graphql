@@ -1,0 +1,756 @@
+# "!" denotes a required field
+# "[]" means this is a list of channels
+
+# Define the type of input expected
+# type AuthPayload {
+#   token: String!
+#   user: User
+# }
+
+# type status{
+#  stat:String
+# }
+
+# type User {
+#   user_id: ID!
+#   email: String
+#   user_name: String!
+#   is_decision_maker:Int,
+#   image_url:String,
+#   subscription:Int
+# }
+
+# type Product_tag{
+
+# product_tag_id:ID
+# product_tag:String
+
+# }
+
+# type Product{
+#  product_id:ID!
+#  product_name:String
+#  status:String
+# }
+
+# type Vendor_Products{
+# product_id:ID
+# product_name:String
+# product_description:String
+# product_link:String
+# product_price:Float
+# product_tags:[Product_tag]
+# fav_product:Int
+# charity_raised:Float
+# no_of_meetings:Int
+# product_documents:[product_document_all]
+# has_presentation:Boolean
+# product_document_name:String
+# }
+
+# type documents{
+#   file_id:ID
+#   product_document_name:String,
+#   product_document_path:String,
+#   document_id:ID
+#   file_size:Float
+# }
+
+# type product_document_all
+# {
+# product_document_path:String
+# product_document_name:String
+# document_type_id:Int
+# file_id:Int
+# file_size:Float
+
+# }
+
+# type industry{
+
+#   value:ID
+#   level:String
+# }
+
+# type product_all{
+
+#   product_data:[Vendor_Products]
+#   products_no:Int!
+
+# }
+
+# type user_details{
+# first_name:String
+# last_name:String
+# user_name:String
+# email_address:String
+# image:String
+# contact_no:String
+# company_name:String
+# company_website:String
+# company_address:String
+# company_zip:String
+# state_id:Int
+# company_city:String
+# country_name:String
+# country_id:Int
+# industries:[industry]
+# management_level:[management_level_upd]
+# company_id:ID
+# company_size_id:ID
+# payment_status:Int
+# date_of_subscription:String
+# renewal_date:String
+# payment_amount:Float
+# image_url:String
+# state:String
+
+# }
+
+# #############
+
+# type Error{
+#   Error:String!
+#   ErrorCode:Int!
+# }
+
+# ##################SIGNUP--DM--UI--TYPES
+# type Keyword
+# {
+# value:ID!
+# level:String!
+# }
+
+# type Charity
+# {
+# org_id:ID!
+# org_name:String!
+# org_address:String
+# org_website:String
+# org_number:String
+# account_id:String
+# org_description:String
+
+# }
+
+# type job
+# {
+#   job_function_id:ID!
+#   name:String!
+#   children:[job]
+#    level:String!
+# }
+
+# ####################################Meeting-Related-type
+# type meeting{
+# result: [Meeting_Detail]
+
+# }
+# type  participant{
+#   result : [participant_details]
+# }
+
+# type participant_details
+# {
+#    meeting_id: Int,
+#    user_id :  Int,
+#    participant_status:Int,
+#    user_name :String,
+#    first_name: String,
+#    last_name :String
+#    dm_id:Boolean
+# }
+
+# type Meeting_Detail
+# {
+#   start_date: String
+#   start_time:String
+#   end_date:String
+#   end_time:String
+#   duration:Int
+#   charity_amount:Float
+#   meeting_id:Int
+#   room:String,
+#   product_id: Int,
+#   product_name:String,
+#   status:Int,
+#   product_description:String
+#   product_tags:[tags]
+
+# }
+
+# type tags{
+# product_tag:String
+# }
+
+# type counting {
+#   pending_meeting :Int,
+
+#   success_meeting:Int,
+#   success_percentage: Float,
+#   total_charity : Float
+# }
+
+# #####################PRODUCT-RELATED TYPES DEFINED
+# type Document{
+
+# document_id:ID!
+# type:String!
+# flag:Int
+
+# }
+
+# ################################
+# #FILE Upload
+
+scalar fileUpload
+
+type File {
+  id: ID!
+  path: String!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+}
+
+# ###########################################SignUp Vendor UI QUERIES TYPES DEFINED
+# type industries{
+#   id:ID
+#   name:String
+#   industry_description:String
+#   checked:Boolean
+#   value:String!
+#   level:String!
+#   }
+
+# type country_state_data{
+
+# country_id:ID
+# state_id:ID
+# country_name:String
+# state:String
+
+# }
+
+# type number_of_employees{
+
+# size_id:ID
+# min:Int
+# max:Int
+
+# }
+# type management_level_upd{
+# management_level_id:ID
+# rank_name:String
+
+# }
+
+# input tag_object{
+#   id:ID
+#   value:String
+# }
+
+# type management_level{
+# rank_id:ID
+# rank_name:String
+# }
+
+# type management_dash{
+# id:ID
+# value:String
+# }
+
+# type industry_dash
+# {
+# id:ID
+# value:String
+# }
+
+# #############################MESSAGE TYPES
+
+# type message
+# {
+#     sender_name:String
+#     message_subject: String
+#     message_body:String
+#     message_received_date:String
+#     isFavourite:Int
+#     isRead:Int
+#     message_id:Int
+#     sender_mail:String
+#     other_receivers:[Receivers]
+#     message_tag:Int
+#     message_tag_name:String
+#     sender_id:ID
+#     replies:[message_reply]
+#     no_of_replies:Int
+#     receiver_id:ID
+#     message_type:Int
+#     isTrail:ID
+
+# }
+
+#  type detail{
+#    stat:String
+#    meeting_id:Int,
+
+#  }
+# type messageInfo
+# {
+#   SendorName:String
+#   ReceiverId:ID
+#   NoOfMessages:Int
+#   MessageSubject:String
+#   MessageBody:String
+# }
+# type messageList
+# {
+# messages:[message]
+# no_of_messages:Int
+
+# }
+# type count{
+# Unread_Messages:Int
+# Draft_messages:Int
+# }
+
+# type Receivers{
+# email_address:String
+# Name:String
+# }
+
+# type message_tag_data
+# {
+#   message_tag_id:ID
+#   message_tag_name:String
+#   message_tag_email:String
+# }
+
+# type message_reply{
+
+# message_subject:String
+# message_body:String
+# message_id:ID
+# createdat:String
+# sender_details:[user_details]
+
+# }
+
+# #####DM
+# type dm{
+#   result: [dm_data]
+# }
+
+# type dm_data
+# {
+#   name:String,
+#   dm_description: String
+#   dm_charity_amount:Float,
+#   email_address:String,
+#   decision_maker_user_id:Int,
+#   dm_hours_per_month:Int,
+#   contact_no:String,
+#   image_url:String,
+#   company_name:String,
+#   company_shortname:String,
+#   company_address: String,
+#   company_zip:String,
+#   company_city:String
+#   company_state:String,
+#   company_country: String,
+#   company_website:String,
+#   company_description:String,
+#   donation_amount:Float,
+#   charities:[charity_name],
+
+#   industry:[industr_detail]
+#   position:String,
+#   isRemovedDm:Int
+# }
+# ###DECISION_MAKER TYPES__<<<<<<DASHBOARD>>>>>>
+
+# type all_decision_makers{
+# dm_data:[decision_maker_details]
+# no_of_dm:Int
+
+# }
+
+# type industr_detail
+# {
+#   industry_id:Int
+#   industry_name:String
+
+# }
+# type charity_causes
+# {
+#   charity_causes: String
+# }
+
+# type decision_maker_details
+# {
+
+# name:String
+# location:String
+# charities:[charity_name]
+# price:Float
+# availability:Int
+# id:ID
+# isFavourite:Int
+# image_url:String
+# isRemovedDM:Int
+# company_name:String
+# company_website:String
+# position:String
+# industry:String
+
+# }
+# type charity_name
+# {
+#   charity_name:String
+#   cause:String
+#   charity_description:String
+
+# }
+
+# type location_dash
+# {
+#   id:ID
+#   value:String
+# }
+
+# ####FILTER---LOOKUPS
+
+# type availability_ranges{
+# id:ID
+# value:String
+# }
+
+# type sub_filter_all{
+
+# management_rank:[management_dash]
+# industry:[industries]
+# location:[location_dash]
+# price:[price_ranges]
+# availability:[availability_ranges]
+
+# }
+
+# type charity_data{
+# org_id:ID
+# charity_name:String
+# dm_charity_amount:Float
+# }
+
+# type price_ranges
+# {
+
+#   id:ID
+#  value:String
+# }
+
+# type my_meetings{
+
+# user_id:ID
+# dm_id:ID
+# start_date:String
+# start_time:String
+# end_date:String
+# meeting_id:ID
+# end_time:String
+# duration:Int
+# twilio_cred:String
+# remarks:String
+# name:String
+# status:Int
+# dm_description:String
+# dm_charity_amount:Float
+# dm_hours_per_month:Float
+# company:String,
+# company_website:String,
+# image_url:String
+
+# }
+
+# type all_my_meet{
+
+#   meetings_all:[my_meetings]
+#   no_of_meets:Int
+# }
+
+# type filter_types{
+# id:ID
+# value:String
+# }
+
+# type filters{
+
+# filter_type:[filter_types]
+# sub_filter:sub_filter_all
+
+# }
+# ###twilio
+# type room{
+#   room_detail:String
+# }
+# type token
+# {
+#   room:String
+#   token: String
+# }
+
+# type charity
+# {
+#   charity_amount:Float
+# }
+# type room_unique_name
+# {
+#   room_unique_name:String
+# }
+# type downloadFileType{
+
+#       fileData:String
+#       mimeType:String
+# }
+
+# ############## PIN PROTECTION
+
+# type product_charity_pending_meeting_data {
+
+# charity_raised_data:[meetings_data]
+# pending_meeting_data:[meetings_data]
+# success_meeting_data:[meetings_data]
+# }
+
+# type charities_data {
+
+#   company_name:String
+#   decision_maker_name:String
+#   company_id:ID
+#   dm_id:ID
+#   meeting_id:ID
+#   status:String
+#   charity_amount:Float
+
+# }
+
+# type meetings_data {
+
+#   company_name:String
+#   decision_maker_name:String
+#   company_id:ID
+#   dm_id:ID
+#   meeting_id:ID
+#   status:String
+#   charity_amount:Float
+#   start_date:String
+#   start_time:String
+#   charity_name:String
+
+# }
+
+# type FLAG_Detail_Of_DM
+# {
+#   user_name: String,
+#   image_url:String,
+#   contact_no:String,
+#   company_name:String,
+#   company_website:String,
+#   org_name: String,
+#   org_website:String,
+#   product_documents:[documents]
+#   flag: Boolean
+#   dm_id:ID
+#   token:String
+#   vendor_id:Int
+# }
+
+# type job_function_Detail
+# {
+#   job_function_id : Int,
+#   job_function : String,
+#   parentId : Int ,
+#   children : [job_function_Detail]
+# }
+
+# input charity_org_struct{
+#   orgname: String,
+#   orgwebsite :String
+# }
+
+#  input filters_data{
+# industry_data:[String]
+# location_data:[String]
+# management_rank_data:[String]
+# }
+
+# input range_start{
+# availability_start:Float
+# donation_start:Float
+# }
+
+# input range_end{
+# availability_end:Float
+# donation_end:Float
+# }
+
+# type Filter_lookup
+# {
+#   Filter:[filter_detail]
+# }
+
+# type filter_detail
+# {
+#   id:String,
+#   Value:String
+# }
+
+type Token {
+  AuthorizationToken: String
+  Status: ResponseStatus
+  User: User_Details
+}
+
+type ResponseStatus {
+  success: Boolean
+  message: String
+}
+
+type User_Details {
+  id: ID!
+  username: String
+  email: String
+  firstName: String
+  lastName: String
+  role: String
+  profile_pic: String
+  phone: String
+  timezone: String
+  cityId: ID
+  countryId: ID
+  bio: String
+  realm: String
+  active: String
+  createdAt: String
+  updatedAt: String
+}
+
+# This type specifies the entry points into our API
+
+##############MAIN_______QUERIES
+type Query {
+  someQuery: String
+  duplicacyCheckerLookup(username: String, email: String): ResponseStatus
+
+  #  product_charity_and_pending_meeting_details(flag:Int,product_id:ID):product_charity_pending_meeting_data
+  #   peek_value_lookup:peek_values_type
+  #   uploads: [File]
+  #   fetch_country_state(flag:Int,country_id:ID):[country_state_data]
+  #   fetch_charity_details_using_dmID(dm_id:ID):[charity_data]
+  #   fetch_Products(page_size:Int!,page_no:Int!,   sorting_flag:Int,  order_flag:Int):product_all
+  #   check_email_user_name_ifexists(email:String,user_name:String):Error
+  #   fetch_company_size:[number_of_employees!]
+  #   fetch_management_level_data:[management_level]
+  #   fetch_industries:[industries]
+  #   fetch_keywords:[Keyword!]
+  #   fetch_charities:[Charity!]
+  #   fetch_jobs:[job]
+  #  fetch_tags_using_product_id(product_id:ID!):[Product_tag!]
+  #  fetch_tags:[Product_tag!]
+  #  fetch_document_type:[Document!]
+  #  fetch_product_info_by_id(product_id:ID!):[Vendor_Products]
+  #  fetch_UserSettings:user_details
+  #  fetch_messages(page_no:Int,page_size:Int,messages_type:Int!,search_string:String):messageList
+  #  fetch_Message_tags:[message_tag_data]
+  #  fetch_messages_by_tag(page_no:Int,page_size:Int,messages_tag:Int):messageList
+  #  fetch_messages_by_tags(page_no:Int,page_size:Int,messages_tag:Int,search_string:String):messageList
+  #  fetch_message_By_Id(message_id:Int,flag:Int):messageList
+  #  Inbox_Unread_Messages:count
+  #  get_all_decision_makers(page_no:Int,page_size:Int,type_filter:[Int],filter_dat:filters_data,search_string:String,order_by:Int,order:Int,start:range_start,end:range_end):all_decision_makers
+  #  filter_lookup:filters
+  #  Inbox_Unread_Draft_Messages:count
+  #  get_meeting_list_by_Id(meeting_id:Int,dmId:Int ):meeting
+  #  participant_detail(meeting_id:Int):participant
+  #  Pending_Meeting_Detail(product_id:Int):counting
+  #  get_all_my_meetings_list(page_no:Int,page_size:Int,startdate:String,enddate:String):all_my_meet
+  #  check_and_create_room_api(meeting_id:Int):room
+  #  get_room_by_meeting_id_api(meeting_id:Int):room_unique_name
+  #  get_decision_maker_by_Id(dm_user_ID:Int!):dm
+  #  Total_Charity_From_App:charity
+  #  Access_For_DM_In_Meeting(meeting_id:Int,  dm_ID:Int, pin:String) : FLAG_Detail_Of_DM
+  #  Meeting_Filter_LookUp:Filter_lookup
+  #  Meeting_Filter_Api(pageno:Int,pagesize:Int,status:String,startdate:String, enddate:String):all_my_meet
+  #  Meeting_Expiry_Api(meeting_id:Int):status
+  #  product_charity_and_pending_meeting_data(flag:Int):product_charity_pending_meeting_data
+  #  get_dm_by_Id(dm_user_ID:Int!):dm
+}
+
+# type peek_values_type
+# {
+#   max_availability:Float
+#   max_donation:Float
+# }
+
+#### FUTURE REFRENCE ---Payment_gateway(meeting_id:ID,amount:Int,stripe_customer_id:String,payment_token:String,customer_description:String):status
+
+##############MAIN_______MUTATIONS
+###############
+# The mutation root type, used to define all mutations
+type Mutation {
+  LoginAPI(username: String, email: String, password: String): Token
+  SignUp(
+    username: String!
+    password: String!
+    email: String!
+    firstName: String!
+    role: String!
+    lastName: String
+  ): ResponseStatus
+  #   Subscription_payments(amount:Int,stripe_customer_id:String,payment_token:String,customer_description:String,deactivate_flag:Int):String
+  #   Forget_password_token_validation(token:String):Int
+  # Forget_password_change_password(user_id:ID,password:String):status
+  # Forget_password_verify_email(email:String):status
+  # signup(path:String,first_name:String!,last_name:String!,email:String!,password:String,user_name:String!,contact_no:String!,company_name:String!,company_website:String,company_shortname:String,company_address:String,company_zip:String,company_city:String,company_state:ID,company_country:ID,company_description:String,company_size_id:ID,is_decision_maker:Int!,industry_id:[ID],management_level_id:[ID!], keywords_ids:[ID],job_function_id:String,charity_ids:[ID],preferredtimefrom:String,preferredtimeto:String,dm_description:String,dm_charity_amount:Float,dm_hours_per_month:Float,charity_org:[charity_org_struct],location_id:ID): AuthPayload
+  #   login(email:String!,user_name:String,password:String!): AuthPayload
+  uploadfile(
+    fileData: [fileUpload]
+    flag: Int
+    product_id: ID
+    path: String
+    document_type_id: Int
+  ): [String]
+  #  download_file(file_type:Int,file_id:Int,flag:Int,vendor_id:ID,tokenVal:String):downloadFileType
+  #  delete_file(file_type:Int,file_id:Int):status
+  #  Add_product(presentation_doc_path:String,supporting_doc_array:[String],company_id:ID,product_name:String!,product_description:String,product_link:String,product_images_path:String,product_document_path:String,tags:[tag_object],price:Float):Product
+  #  Update_product( presentation_doc_path:String,supporting_doc_array:[String],created_by:ID,company_id:ID,product_id:ID,product_name:String,product_description:String,product_link:String,product_images_path:String,product_document_path:String,tags:[tag_object],deleted_tags:[tag_object],price:Float):Product
+  #  Favourite_UnFavourite_Product(flag:Int!,product_id:ID!):status
+  #  Delete_product(product_id:ID!):status
+  #  Update_User_Account_Settings(first_name:String,last_name:String,email_address:String,user_name:String,contact_no:String,password:String):status
+  #  Update_Company_Settings(company_id:ID,company_address:String,company_zip:String,company_state:Int,company_size_id:ID,company_website:String, company_city:String,
+  #   company_country:Int,insert_industry_ids:[ID],deleted_industry_tags:[ID],insert_management_ids:[ID],deleted_management_tags:[ID]):status
+  #  Add_Message(receivers:[String],message_subject:String,message_body:String,message_tag:Int,message_replied_id:ID,isActive:Int,isSent:Int):status
+  #  mark_read_unread(message_id:[ID],flag:Int):status
+  #  Send_Message(message_subject:String,message_body:String,message_tag:Int,message_replied_id:Int,isActive:Int,isSent:Int,isDraft:Int,message_id:Int):status
+  #  Trash_Message(message_id:ID,message_type:Int):status
+  #  Fav_UnFav_Message(message_id:ID,message_type:Int,flag:Int):status
+  #  Update_Draft_Message(message_id:Int!,message_subject:String,message_body:String,message_tag:Int):status
+  #  Mark_Tag_Fav_Unfav_Api(message_id:Int,flag:Int,isSent:Int):status
+  #  Request_Meeting(meeting_id:ID,remarks:String,UserId:[ID], product_id:Int,amount:Float,stripe_customer_id:String,payment_token:String,customer_description:String,charity_id:Int):detail
+  #  Schedule_Meeting_Api(meeting_id :Int,
+  #  start_date:String!,
+  #  start_time:String,
+  #  end_date:String,
+  #  end_time:String,
+  #  duration:Int,
+  #  charity_amount:Float ):status
+  #  Disconnect(meeting_id:Int, user_id:Int):status
+  #  fav_unfav_dm(flag:Int,dm_id:Int):status
+  #  remove_unremove_dms(flag:Int,dm_id:Int):status
+  #  Start_Meeting_And_Meeting_Joined(flag:Int, meeting_id:Int):status
+  #  Create_Room_Api:status
+  #  connect_participant_api:status,
+  #  Access_Grant_Api(identity:String,room_name:String):token
+  #  Room_Creation_And_Access_Grant_And_Video_Sharing_Api(identity:String,room_name:String,meeting_id:Int!):token
+  #  End_Room_Api(room_id:String,meeting_id:Int):status
+  #  ScreenSharing(room_name:String): room
+  #  delete_from_trash(message_id:ID):status
+}
